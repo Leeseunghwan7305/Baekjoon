@@ -18,3 +18,4 @@ for (let [a, b, c] of input) {
     console.log("wrong");
   }
 }
+console.log(window);
