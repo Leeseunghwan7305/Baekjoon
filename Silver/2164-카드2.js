@@ -1,15 +1,60 @@
 let fs = require("fs");
-let input = fs.readFileSync("../text.txt").toString().trim().split("\n");
+let input = fs.readFileSync("/dev/stdin").toString().trim().split("\n");
 const n = parseInt(input.shift());
 
-//버리고 그다음은 맨뒤로
+class Node {
+  constructor(num) {
+    this.num = num;
+    this.next = null;
+    this.prev = null;
+  }
+}
+
+class LinkedList {
+  constructor() {
+    this.start = null;
+    this.end = null;
+    this._size = 0;
+  }
+
+  add(num) {
+    const newNode = new Node(num);
+
+    if (!this.start) this.start = newNode;
+    else {
+      this.end.next = newNode;
+      newNode.prev = this.end;
+    }
+
+    this.end = newNode;
+    this._size++;
+
+    return newNode;
+  }
+
+  getHead() {
+    return this.start.num;
+  }
+
+  removeHead() {
+    this.start = this.start.next;
+    this.start.prev = null;
+    this._size--;
+  }
+  getSize() {
+    return this._size;
+  }
+}
+
+const node = new LinkedList();
 
 for (let i = 1; i <= n; i++) {
-  input.push(i);
+  node.add(i);
+}
+while (node.getSize() !== 1) {
+  node.removeHead();
+  node.add(node.getHead());
+  node.removeHead();
 }
 
-while (input.length != 1) {
-  input.splice(0, 1);
-  input.push(input.shift());
-}
-console.log(input[0]);
+console.log(node.getHead());
