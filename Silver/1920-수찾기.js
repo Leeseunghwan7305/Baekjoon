@@ -1,24 +1,31 @@
 let fs = require("fs");
 let input = fs.readFileSync("../text.txt").toString().trim().split("\r\n");
+const arr = input[1].split(" ").map((i) => +i);
+const diffArr = input[3].split(" ").map((i) => +i);
 
-let one = input[1].split(" ").sort((a, b) => a - b);
+// let setArr = new Set(arr);
+// let result = [];
+// diffArr.forEach((e) => {
+//   if (setArr.has(e)) {
+//     result.push(1);
+//   } else {
+//     result.push(0);
+//   }
+// });
+// console.log(result.join("\n"));
 
-let two = input[3].split(" ");
-two.forEach((i) => {
-  let lt = 0;
-  let rt = one.length;
-  let flag = 0;
-  while (lt <= rt) {
-    let mid = parseInt((lt + rt) / 2);
+let mapArr = new Map();
 
-    if (i === one[mid]) {
-      flag = 1;
-      break;
-    } else if (i < one[mid]) {
-      rt = mid - 1;
-    } else {
-      lt = mid + 1;
-    }
+for (let i = 0; i < arr.length; i++) {
+  mapArr.set(arr[i], 1);
+}
+
+let result = [];
+diffArr.forEach((e) => {
+  if (mapArr.has(e)) {
+    result.push(1);
+  } else {
+    result.push(0);
   }
-  console.log(flag);
 });
+console.log(result.join("\n"));
