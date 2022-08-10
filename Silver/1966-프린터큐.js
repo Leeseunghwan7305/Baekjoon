@@ -5,14 +5,34 @@ const input = require("fs")
   .split("\r\n");
 
 let print = input.map((i) => i.split(" ").map((i) => +i));
-console.log(print);
 
-for (let i = 0; i < print[0][0]; i++) {
-  let index = print[i * 2 + 1][1];
+let [a, ...arr] = print;
 
-  let find = print[i * 2 + 2][index]; //찾는 숫자
+for (let i = 0; i < arr.length; i += 2) {
+  let L = arr[i][1]; // 이 위치에 있는걸 뽑아야함
+  let num = 0;
+  while (1) {
+    let pre = arr[i + 1][0];
+
+    if (pre == Math.max(...arr[i + 1]) && L == 0) {
+      arr[i + 1].shift();
+      num++;
+      console.log(num);
+      break;
+    } else if (pre == Math.max(...arr[i + 1]) && L != 0) {
+      arr[i + 1].shift();
+      num++;
+      L = L - 1;
+    } else if (pre != Math.max(...arr[i + 1]) && L == 0) {
+      arr[i + 1].shift();
+      arr[i + 1].push(pre);
+
+      L = arr[i + 1].length - 1;
+    } else if (pre != Math.max(...arr[i + 1]) && L != 0) {
+      arr[i + 1].shift();
+      arr[i + 1].push(pre);
+
+      L = L - 1;
+    }
+  }
 }
-// 0  1 2
-// 1 3 5
-// 2 4 6
-//아이디어는 M 즉  목표하는 인덱스 값을 받아서 M값을 움직여야한다.
