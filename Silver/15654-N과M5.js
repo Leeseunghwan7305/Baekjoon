@@ -11,7 +11,7 @@ const nums = input[1].sort((a, b) => a - b);
 //중복은 안되어야하며
 // 수열은 사전식으로
 
-let ch = Array.from({ length: N }, () => 0); //숫자 개수만큼
+//let ch = Array.from({ length: N }, () => 0); //숫자 개수만큼
 let tmp = Array.from({ length: M }, () => 0); // 몇개찾을꺼야?
 let arr = "";
 function DFS(L) {
@@ -20,19 +20,13 @@ function DFS(L) {
   } else {
     for (let i = 0; i < N; i++) {
       if (L == 0) {
-        if (ch[i] == 0) {
-          ch[i] = 1;
           tmp[L] = nums[i];
           DFS(L + 1);
-          ch[i] = 0;
         }
       } else {
-        if (ch[i] == 0) {
           tmp[L] = nums[i];
           if (tmp[L] > tmp[L - 1]) {
-            ch[i] = 1;
             DFS(L + 1);
-            ch[i] = 0;
           }
         }
       }
