@@ -6,22 +6,43 @@ const [n, ...arr] = fs
   .split("\r\n")
   .map((v) => +v);
 
-function DFS(S, Y) {
-  if (S > Y) {
+let result = "";
+let num = 0;
+function DFS(C, G) {
+  if (C > G) {
     return;
   }
-  if (S == Y) {
+  if (C == G) {
     num++;
     return;
   } else {
-    DFS(S + 1, Y);
-    DFS(S + 2, Y);
-    DFS(S + 3, Y);
+    DFS(C + 1, G);
+    DFS(C + 2, G);
+    DFS(C + 3, G);
   }
 }
-let num = 0;
-for (let Y of arr) {
+for (let i = 0; i < arr.length; i++) {
+  DFS(0, arr[i]);
+  result += num + "\n";
   num = 0;
-  DFS(0, Y);
-  console.log(num);
 }
+console.log(result.trim());
+// function DFS(S, Y) {
+//   if (S > Y) {
+//     return;
+//   }
+//   if (S == Y) {
+//     num++;
+//     return;
+//   } else {
+//     DFS(S + 1, Y);
+//     DFS(S + 2, Y);
+//     DFS(S + 3, Y);
+//   }
+// }
+// let num = 0;
+// for (let Y of arr) {
+//   num = 0;
+//   DFS(0, Y);
+//   console.log(num);
+// }
