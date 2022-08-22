@@ -6,14 +6,17 @@ const [n, ...arr] = fs
   .split("\r\n")
   .map((v) => +v);
 
-let trigle = Array.from({ length: 101 }, () => 0);
-trigle[1] = 1;
-trigle[2] = 1;
-trigle[3] = 1;
+let tmp = Array.from({ length: 101 }, () => 0);
+let result = "";
+tmp[0] = 1;
+tmp[1] = 1;
+tmp[2] = 1;
 
-for (let i = 4; i < trigle.length; i++) {
-  trigle[i] = trigle[i - 3] + trigle[i - 2];
+for (let i = 3; i < tmp.length; i++) {
+  tmp[i] = tmp[i - 3] + tmp[i - 2];
 }
 for (let i = 0; i < arr.length; i++) {
-  console.log(trigle[arr[i]]);
+  result += tmp[arr[i] - 1] + "\n";
 }
+
+console.log(result.trim());
