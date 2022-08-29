@@ -7,6 +7,7 @@ input = input.map((i) => i.split(" ").map((v) => +v));
 asd;
 asdasd;
 asdasdsa;
+asasd;
 console.log(input);
 let sumInput = [];
 let sum = 0;
