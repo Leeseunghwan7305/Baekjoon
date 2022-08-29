@@ -1,7 +1,7 @@
 let input = require("fs").readFileSync("../text.txt").toString().trim();
 
 let tmp = Array.from({ length: 1001 }, () => 0);
-
+sad
 tmp[0] = 1;
 tmp[1] = 3;
 tmp[2] = 5;
