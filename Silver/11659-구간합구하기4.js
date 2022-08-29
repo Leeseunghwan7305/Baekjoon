@@ -5,8 +5,13 @@ let input = require("fs")
   .split("\r\n");
 input = input.map((i) => i.split(" ").map((v) => +v));
 asd;
+<<<<<<< HEAD
 asdasddas;
+=======
+asdasd;
+>>>>>>> feature/hi
 asdasdsa;
+asasd;
 console.log(input);
 let sumInput = [];
 let sum = 0;
