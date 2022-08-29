@@ -5,6 +5,7 @@ let input = require("fs")
   .split("\r\n");
 input = input.map((i) => i.split(" ").map((v) => +v));
 asd;
+asdasdsa;
 console.log(input);
 let sumInput = [];
 let sum = 0;
