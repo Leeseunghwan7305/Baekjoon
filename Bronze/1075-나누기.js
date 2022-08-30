@@ -5,7 +5,9 @@ let input = fs
 	.split('\r\n')
 	.map((i) => +i);
 
-let [goal, a] = input;
+213132;
+asdad;
+asdads;
 goal = goal + '';
 goal = goal.substr(0, goal.length - 2);
 let result = '';
