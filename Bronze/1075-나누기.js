@@ -8,7 +8,8 @@ let input = fs
 213132;
 asdad;
 asdads;
-asddas
+asddas;
+asdasdsad;
 goal = goal + '';
 goal = goal.substr(0, goal.length - 2);
 let result = '';
